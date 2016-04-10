@@ -4,7 +4,7 @@
 #
 Name     : libX11
 Version  : 1.6.3
-Release  : 5
+Release  : 6
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.3.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.3.tar.gz
 Summary  : X Library XCB interface
@@ -16,6 +16,7 @@ Requires: libX11-doc
 BuildRequires : libxslt-bin
 BuildRequires : pkgconfig(inputproto)
 BuildRequires : pkgconfig(kbproto)
+BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xcb)
 BuildRequires : pkgconfig(xextproto)
 BuildRequires : pkgconfig(xf86bigfontproto)
@@ -42,6 +43,7 @@ Summary: dev components for the libX11 package.
 Group: Development
 Requires: libX11-lib
 Requires: libX11-data
+Provides: libX11-devel
 
 %description dev
 dev components for the libX11 package.
@@ -68,10 +70,20 @@ lib components for the libX11 package.
 %setup -q -n libX11-1.6.3
 
 %build
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -fno-semantic-interposition -falign-functions=32 -O3 -flto "
+export FCFLAGS="$CFLAGS -fno-semantic-interposition -falign-functions=32 -O3 -flto "
+export FFLAGS="$CFLAGS -fno-semantic-interposition -falign-functions=32 -O3 -flto "
+export CXXFLAGS="$CXXFLAGS -fno-semantic-interposition -falign-functions=32 -O3 -flto "
 %configure --disable-static
-make V=1 %{?_smp_mflags}
+make V=1  %{?_smp_mflags}
 
 %check
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
