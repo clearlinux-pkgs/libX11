@@ -4,7 +4,7 @@
 #
 Name     : libX11
 Version  : 1.6.3
-Release  : 7
+Release  : 8
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.3.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.3.tar.gz
 Summary  : X Library XCB interface
