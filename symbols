@@ -826,7 +826,6 @@ libX11.so.6:_XKeysymToKeycode
 libX11.so.6:_XKeysymToModifiers
 libX11.so.6:_XLookupKeysym
 libX11.so.6:_XLookupString
-libX11.so.6:_XNextRequest
 libX11.so.6:_XNoticeCreateBitmap
 libX11.so.6:_XNoticePutBitmap
 libX11.so.6:_XOpenLC
