@@ -4,7 +4,7 @@
 #
 Name     : libX11
 Version  : 1.6.4
-Release  : 9
+Release  : 10
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.4.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.4.tar.gz
 Summary  : X Library
@@ -300,8 +300,10 @@ rm -rf %{buildroot}
 /usr/include/X11/Xresource.h
 /usr/include/X11/Xutil.h
 /usr/include/X11/cursorfont.h
-/usr/lib64/*.so
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/libX11-xcb.so
+/usr/lib64/libX11.so
+/usr/lib64/pkgconfig/x11-xcb.pc
+/usr/lib64/pkgconfig/x11.pc
 
 %files doc
 %defattr(-,root,root,-)
@@ -311,4 +313,7 @@ rm -rf %{buildroot}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
+/usr/lib64/libX11-xcb.so.1
+/usr/lib64/libX11-xcb.so.1.0.0
+/usr/lib64/libX11.so.6
+/usr/lib64/libX11.so.6.3.0
