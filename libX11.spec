@@ -4,7 +4,7 @@
 #
 Name     : libX11
 Version  : 1.6.4
-Release  : 11
+Release  : 12
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.4.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.4.tar.gz
 Summary  : X Library
@@ -29,6 +29,7 @@ BuildRequires : pkgconfig(32xproto)
 BuildRequires : pkgconfig(32xtrans)
 BuildRequires : pkgconfig(inputproto)
 BuildRequires : pkgconfig(kbproto)
+BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xcb)
 BuildRequires : pkgconfig(xextproto)
 BuildRequires : pkgconfig(xf86bigfontproto)
