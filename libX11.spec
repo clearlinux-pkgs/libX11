@@ -6,7 +6,7 @@
 #
 Name     : libX11
 Version  : 1.6.5
-Release  : 14
+Release  : 15
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.5.tar.bz2
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.5.tar.bz2
 Source99 : http://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.5.tar.bz2.sig
