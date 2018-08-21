@@ -1,0 +1,11 @@
+1.6.6
+libxslt-bin
+pkg-config
+pkgconfig(32xcb)
+pkgconfig(32xorg-macros)
+pkgconfig(32xtrans)
+pkgconfig(x11)
+pkgconfig(xcb)
+pkgconfig(xorg-macros)
+pkgconfig(xtrans)
+xmlto
