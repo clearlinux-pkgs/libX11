@@ -1,1 +1,1 @@
-
+--enable-loadable-i18n --enable-ipv6 --enable-unix-transport 

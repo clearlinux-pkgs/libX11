@@ -6,7 +6,7 @@
 #
 Name     : libX11
 Version  : 1.6.6
-Release  : 19
+Release  : 20
 URL      : https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.6.tar.bz2
 Source0  : https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.6.tar.bz2
 Source99 : https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.6.tar.bz2.sig
@@ -22,6 +22,7 @@ BuildRequires : gcc-libgcc32
 BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
+BuildRequires : glibc-locale
 BuildRequires : libxslt-bin
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(32xcb)
@@ -128,12 +129,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1534872767
+export SOURCE_DATE_EPOCH=1536318534
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-%configure --disable-static
+%configure --disable-static --enable-loadable-i18n --enable-ipv6 --enable-unix-transport
 make  %{?_smp_mflags}
 
 pushd ../build32/
@@ -141,7 +142,7 @@ export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 export CFLAGS="$CFLAGS -m32"
 export CXXFLAGS="$CXXFLAGS -m32"
 export LDFLAGS="$LDFLAGS -m32"
-%configure --disable-static    --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
+%configure --disable-static --enable-loadable-i18n --enable-ipv6 --enable-unix-transport   --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
 make  %{?_smp_mflags}
 popd
 %check
@@ -152,7 +153,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1534872767
+export SOURCE_DATE_EPOCH=1536318534
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/libX11
 cp COPYING %{buildroot}/usr/share/doc/libX11/COPYING
@@ -1218,6 +1219,21 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/X11/locale/common/ximcp.so
+/usr/lib64/X11/locale/common/ximcp.so.2
+/usr/lib64/X11/locale/common/ximcp.so.2.0.0
+/usr/lib64/X11/locale/common/xlcDef.so
+/usr/lib64/X11/locale/common/xlcDef.so.2
+/usr/lib64/X11/locale/common/xlcDef.so.2.0.0
+/usr/lib64/X11/locale/common/xlcUTF8Load.so
+/usr/lib64/X11/locale/common/xlcUTF8Load.so.2
+/usr/lib64/X11/locale/common/xlcUTF8Load.so.2.0.0
+/usr/lib64/X11/locale/common/xlibi18n.so
+/usr/lib64/X11/locale/common/xlibi18n.so.2
+/usr/lib64/X11/locale/common/xlibi18n.so.2.0.0
+/usr/lib64/X11/locale/common/xomGeneric.so
+/usr/lib64/X11/locale/common/xomGeneric.so.2
+/usr/lib64/X11/locale/common/xomGeneric.so.2.0.0
 /usr/lib64/libX11-xcb.so.1
 /usr/lib64/libX11-xcb.so.1.0.0
 /usr/lib64/libX11.so.6
@@ -1225,6 +1241,21 @@ popd
 
 %files lib32
 %defattr(-,root,root,-)
+/usr/lib32/X11/locale/common/ximcp.so
+/usr/lib32/X11/locale/common/ximcp.so.2
+/usr/lib32/X11/locale/common/ximcp.so.2.0.0
+/usr/lib32/X11/locale/common/xlcDef.so
+/usr/lib32/X11/locale/common/xlcDef.so.2
+/usr/lib32/X11/locale/common/xlcDef.so.2.0.0
+/usr/lib32/X11/locale/common/xlcUTF8Load.so
+/usr/lib32/X11/locale/common/xlcUTF8Load.so.2
+/usr/lib32/X11/locale/common/xlcUTF8Load.so.2.0.0
+/usr/lib32/X11/locale/common/xlibi18n.so
+/usr/lib32/X11/locale/common/xlibi18n.so.2
+/usr/lib32/X11/locale/common/xlibi18n.so.2.0.0
+/usr/lib32/X11/locale/common/xomGeneric.so
+/usr/lib32/X11/locale/common/xomGeneric.so.2
+/usr/lib32/X11/locale/common/xomGeneric.so.2.0.0
 /usr/lib32/libX11-xcb.so.1
 /usr/lib32/libX11-xcb.so.1.0.0
 /usr/lib32/libX11.so.6
