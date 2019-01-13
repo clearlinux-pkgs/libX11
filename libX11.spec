@@ -71,7 +71,6 @@ Source200: https://xorg.freedesktop.org/releases/individual/xcb/libxcb-1.13.1.ta
 Group    : Development/Tools
 License  : MIT
 Requires: libX11-bin
-Requires: libX11-license
 Requires: libX11-man
 Summary: superset xorg libraries
 
@@ -115,7 +114,6 @@ for effciency reasons
 %package lib
 Summary: lib components for the libX11 package.
 Group: Binaries
-Requires: libX11-license
 
 %description lib
 bin components for the libX11 package.
@@ -123,7 +121,6 @@ bin components for the libX11 package.
 %package lib32
 Summary: lib components for the libX11 package.
 Group: Binaries
-Requires: libX11-license
 
 %description lib32
 bin components for the libX11 package.
@@ -131,7 +128,6 @@ bin components for the libX11 package.
 %package dev
 Summary: dev components for the libX11 package.
 Group: Binaries
-Requires: libX11-license
 Provides: libX11-dev libICE-dev libSM-dev libXau-dev libXdmcp-dev libXext-dev libXinerama-dev libXfixes-dev libXdamage-dev libXrender-dev libXrandr-dev libXcomposite-dev libXi-dev libXxf86vm-dev libxcb-dev
 
 %description dev
@@ -140,7 +136,6 @@ bin components for the libX11 package.
 %package dev32
 Summary: dev components for the libX11 package.
 Group: Binaries
-Requires: libX11-license
 Requires: libX11-dev
 Provides: libX11-dev32 libICE-dev32 libSM-dev32 libXau-dev32 libXdmcp-dev32 libXext-dev32 libXinerama-dev32 libXfixes-dev32 libXdamage-dev32 libXrender-dev32 libXrandr-dev32 libXcomposite-dev32 libXi-dev32 libXxf86vm-dev32 libxcb-dev32
 
