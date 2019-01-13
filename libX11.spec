@@ -1,6 +1,6 @@
 Name     : libX11
 Version  : 1.6.7
-Release  : 403
+Release  : 404
 
 Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.7.tar.gz
 
@@ -70,7 +70,7 @@ Source200: https://xorg.freedesktop.org/releases/individual/xcb/libxcb-1.13.1.ta
 
 Group    : Development/Tools
 License  : MIT
-Requires: libX11-man
+Requires: libX11-doc
 Summary: superset xorg libraries
 
 
@@ -149,7 +149,6 @@ bin components for the libX11 package.
 %package doc
 Summary: doc components for the libX11 package.
 Group: Documentation
-Requires: libX11-man
 
 %description doc
 doc components for the libX11 package.
