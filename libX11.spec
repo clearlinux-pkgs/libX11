@@ -70,7 +70,6 @@ Source200: https://xorg.freedesktop.org/releases/individual/xcb/libxcb-1.13.1.ta
 
 Group    : Development/Tools
 License  : MIT
-Requires: libX11-bin
 Requires: libX11-man
 Summary: superset xorg libraries
 
@@ -167,6 +166,7 @@ license components for the libX11 package.
 %package man
 Summary: man components for the libX11 package.
 Group: Default
+Provides: libX11-man libICE-man libSM-man libXau-man libXdmcp-man libXext-man libXinerama-man libXfixes-man libXdamage-man libXrender-man libXrandr-man libXcomposite-man libXi-man libXxf86vm-man libxcb-man
 
 %description man
 man components for the libX11 package.
