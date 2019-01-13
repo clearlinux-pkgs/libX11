@@ -124,7 +124,7 @@ bin components for the libX11 package.
 %package lib32
 Summary: lib components for the libX11 package.
 Group: Binaries
-libX11-lib32 libICE-lib32 libSM-lib32 libXau-lib32 libXdmcp-lib32 libXext-lib32 libXinerama-lib32 libXfixes-lib32 libXdamage-lib32 libXrender-lib32 libXrandr-lib32 libXcomposite-lib32 libXi-lib32 libXxf86vm-lib32 libxcb-lib32
+Provides: libX11-lib32 libICE-lib32 libSM-lib32 libXau-lib32 libXdmcp-lib32 libXext-lib32 libXinerama-lib32 libXfixes-lib32 libXdamage-lib32 libXrender-lib32 libXrandr-lib32 libXcomposite-lib32 libXi-lib32 libXxf86vm-lib32 libxcb-lib32
 
 %description lib32
 bin components for the libX11 package.
