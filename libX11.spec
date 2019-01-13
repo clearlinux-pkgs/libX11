@@ -142,6 +142,7 @@ Summary: dev components for the libX11 package.
 Group: Binaries
 Requires: libX11-license
 Requires: libX11-dev
+Provides: libX11-dev32 libICE-dev32 libSM-dev32 libXau-dev32 libXdmcp-dev32 libXext-dev32 libXinerama-dev32 libXfixes-dev32 libXdamage-dev32 libXrender-dev32 libXrandr-dev32 libXcomposite-dev32 libXi-dev32 libXxf86vm-dev32 libxcb-dev32
 
 %description dev32
 bin components for the libX11 package.
