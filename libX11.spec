@@ -132,6 +132,7 @@ bin components for the libX11 package.
 Summary: dev components for the libX11 package.
 Group: Binaries
 Provides: libX11-dev libICE-dev libSM-dev libXau-dev libXdmcp-dev libXext-dev libXinerama-dev libXfixes-dev libXdamage-dev libXrender-dev libXrandr-dev libXcomposite-dev libXi-dev libXxf86vm-dev libxcb-dev
+Requires: libX11-lib
 
 %description dev
 bin components for the libX11 package.
