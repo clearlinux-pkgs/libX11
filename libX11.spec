@@ -106,6 +106,8 @@ BuildRequires : libpthread-stubs-dev
 
 BuildRequires : xmlto
 
+Provides: libX11-data libICE-data libSM-data libXau-data libXdmcp-data libXext-data libXinerama-data libXfixes-data libXdamage-data libXrender-data libXrandr-data libXcomposite-data libXi-data libXxf86vm-data libxcb-data
+
 %description
 libX11 is a grouping of various xorg small libraries into a master .so
 for effciency reasons
@@ -114,6 +116,7 @@ for effciency reasons
 %package lib
 Summary: lib components for the libX11 package.
 Group: Binaries
+Provides: libX11-lib libICE-lib libSM-lib libXau-lib libXdmcp-lib libXext-lib libXinerama-lib libXfixes-lib libXdamage-lib libXrender-lib libXrandr-lib libXcomposite-lib libXi-lib libXxf86vm-lib libxcb-lib
 
 %description lib
 bin components for the libX11 package.
@@ -121,6 +124,7 @@ bin components for the libX11 package.
 %package lib32
 Summary: lib components for the libX11 package.
 Group: Binaries
+libX11-lib32 libICE-lib32 libSM-lib32 libXau-lib32 libXdmcp-lib32 libXext-lib32 libXinerama-lib32 libXfixes-lib32 libXdamage-lib32 libXrender-lib32 libXrandr-lib32 libXcomposite-lib32 libXi-lib32 libXxf86vm-lib32 libxcb-lib32
 
 %description lib32
 bin components for the libX11 package.
