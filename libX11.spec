@@ -46,6 +46,9 @@ Source130: https://xorg.freedesktop.org/releases/individual/lib/libXi-1.7.9.tar.
 %global LIB140 libXxf86vm
 Source140: https://xorg.freedesktop.org/releases/individual/lib/libXxf86vm-1.1.4.tar.gz
 
+%global LIB150 libxshmfence
+Source150: https://xorg.freedesktop.org/releases/individual/lib/libxshmfence-1.3.tar.bz2
+
 %global LIB200 libxcb
 %global LIB200_EXTRA64 output/usr/lib64/libxcb-composite.a output/usr/lib64/libxcb-damage.a  output/usr/lib64/libxcb-dpms.a output/usr/lib64/libxcb-dri2.a output/usr/lib64/libxcb-dri3.a output/usr/lib64/libxcb-glx.a  output/usr/lib64/libxcb-present.a output/usr/lib64/libxcb-randr.a output/usr/lib64/libxcb-record.a output/usr/lib64/libxcb-render.a output/usr/lib64/libxcb-res.a output/usr/lib64/libxcb-screensaver.a output/usr/lib64/libxcb-shape.a output/usr/lib64/libxcb-shm.a output/usr/lib64/libxcb-sync.a output/usr/lib64/libxcb-xf86dri.a output/usr/lib64/libxcb-xfixes.a output/usr/lib64/libxcb-xinerama.a output/usr/lib64/libxcb-xinput.a output/usr/lib64/libxcb-xkb.a output/usr/lib64/libxcb-xtest.a output/usr/lib64/libxcb-xv.a output/usr/lib64/libxcb-xvmc.a output/usr/lib64/libX11-xcb.a
 %global LIB200_EXTRA32 output/usr/lib32/libxcb-composite.a output/usr/lib32/libxcb-damage.a  output/usr/lib32/libxcb-dpms.a output/usr/lib32/libxcb-dri2.a output/usr/lib32/libxcb-dri3.a output/usr/lib32/libxcb-glx.a  output/usr/lib32/libxcb-present.a output/usr/lib32/libxcb-randr.a output/usr/lib32/libxcb-record.a output/usr/lib32/libxcb-render.a output/usr/lib32/libxcb-res.a output/usr/lib32/libxcb-screensaver.a output/usr/lib32/libxcb-shape.a output/usr/lib32/libxcb-shm.a output/usr/lib32/libxcb-sync.a output/usr/lib32/libxcb-xf86dri.a output/usr/lib32/libxcb-xfixes.a output/usr/lib32/libxcb-xinerama.a output/usr/lib32/libxcb-xinput.a output/usr/lib32/libxcb-xkb.a output/usr/lib32/libxcb-xtest.a output/usr/lib32/libxcb-xv.a output/usr/lib32/libxcb-xvmc.a output/usr/lib32/libX11-xcb.a
@@ -90,7 +93,7 @@ BuildRequires : libpthread-stubs-dev
 
 BuildRequires : xmlto
 
-%define provide() libX11-%1 libICE-%1 libSM-%1 libXau-%1 libXdmcp-%1 libXext-%1 libXinerama-%1 libXfixes-%1 libXdamage-%1 libXrender-%1 libXrandr-%1 libXcomposite-%1 libXi-%1 libXxf86vm-%1 libxcb-%1
+%define provide() libX11-%1 libICE-%1 libSM-%1 libXau-%1 libXdmcp-%1 libXext-%1 libXinerama-%1 libXfixes-%1 libXdamage-%1 libXrender-%1 libXrandr-%1 libXcomposite-%1 libXi-%1 libXxf86vm-%1 libxshmfence-%1 libxcb-%1
 
 Provides: %provide data
 
@@ -233,6 +236,7 @@ BuildOne %{SOURCE110}
 BuildOne %{SOURCE120}
 BuildOne %{SOURCE130}
 BuildOne %{SOURCE140}
+BuildOne %{SOURCE150}
 
 
 # xcb
@@ -255,6 +259,7 @@ gcc $CFLAGS $LDFLAGS -m64 -o 64/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,l
 	output/usr/lib64/%{LIB120}.a \
 	output/usr/lib64/%{LIB130}.a \
 	output/usr/lib64/%{LIB140}.a \
+	output/usr/lib64/%{LIB150}.a \
 	output/usr/lib64/%{LIB200}.a %{LIB200_EXTRA64} \
 	-Wl,--no-whole-archive -shared  -ldl
 	
@@ -280,8 +285,9 @@ gcc $CFLAGS $LDFLAGS -m32 -o 32/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,l
 	output/usr/lib32/%{LIB120}.a \
 	output/usr/lib32/%{LIB130}.a \
 	output/usr/lib32/%{LIB140}.a \
+	output/usr/lib32/%{LIB150}.a \
 	output/usr/lib32/%{LIB200}.a %{LIB200_EXTRA32} \
-	-Wl,--no-whole-archive -shared   -ldl
+	-Wl,--no-whole-archive -shared	 -ldl
 
 ln -s libX11.so.6.3.0 32/libX11.so
 ln -s libX11.so.6.3.0 32/libX11.so.6
