@@ -252,7 +252,7 @@ BuildOne %{SOURCE200} %{LIB200}-%{VER200} --enable-dri3 --with-queue-size=32768 
 
 
 mkdir 64/
-gcc $CFLAGS $LDFLAGS -m64 -o 64/libX11.so.6.3.0  -Wl,--no-undefined  -Wl,-soname,libX11.so.6 -Wl,--whole-archive  \
+gcc $CFLAGS $LDFLAGS -m64 -o 64/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive \
 	output/usr/lib64/%{LIB10}.a \
 	output/usr/lib64/%{LIB20}.a \
 	output/usr/lib64/%{LIB30}.a \
@@ -277,7 +277,7 @@ ln -s libX11.so.6.3.0 64/libX11.so.6
 
 
 mkdir 32/
-gcc $CFLAGS $LDFLAGS -m32 -o 32/libX11.so.6.3.0  -Wl,--no-undefined  -Wl,-soname,libX11.so.6 -Wl,--whole-archive  \
+gcc $CFLAGS $LDFLAGS -m32 -o 32/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive \
 	output/usr/lib32/%{LIB10}.a \
 	output/usr/lib32/%{LIB20}.a \
 	output/usr/lib32/%{LIB30}.a \
