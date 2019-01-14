@@ -105,7 +105,9 @@ BuildRequires : libpthread-stubs-dev
 
 BuildRequires : xmlto
 
-Provides: libX11-data libICE-data libSM-data libXau-data libXdmcp-data libXext-data libXinerama-data libXfixes-data libXdamage-data libXrender-data libXrandr-data libXcomposite-data libXi-data libXxf86vm-data libxcb-data
+%define provide() libX11-%1 libICE-%1 libSM-%1 libXau-%1 libXdmcp-%1 libXext-%1 libXinerama-%1 libXfixes-%1 libXdamage-%1 libXrender-%1 libXrandr-%1 libXcomposite-%1 libXi-%1 libXxf86vm-%1 libxcb-%1
+
+Provides: %provide data
 
 %description
 libX11 is a grouping of various xorg small libraries into a master .so
@@ -115,7 +117,7 @@ for effciency reasons
 %package lib
 Summary: lib components for the libX11 package.
 Group: Binaries
-Provides: libX11-lib libICE-lib libSM-lib libXau-lib libXdmcp-lib libXext-lib libXinerama-lib libXfixes-lib libXdamage-lib libXrender-lib libXrandr-lib libXcomposite-lib libXi-lib libXxf86vm-lib libxcb-lib
+Provides: %provide lib
 
 %description lib
 bin components for the libX11 package.
@@ -123,7 +125,7 @@ bin components for the libX11 package.
 %package lib32
 Summary: lib components for the libX11 package.
 Group: Binaries
-Provides: libX11-lib32 libICE-lib32 libSM-lib32 libXau-lib32 libXdmcp-lib32 libXext-lib32 libXinerama-lib32 libXfixes-lib32 libXdamage-lib32 libXrender-lib32 libXrandr-lib32 libXcomposite-lib32 libXi-lib32 libXxf86vm-lib32 libxcb-lib32
+Provides: %provide lib32
 
 %description lib32
 bin components for the libX11 package.
@@ -131,7 +133,7 @@ bin components for the libX11 package.
 %package dev
 Summary: dev components for the libX11 package.
 Group: Binaries
-Provides: libX11-dev libICE-dev libSM-dev libXau-dev libXdmcp-dev libXext-dev libXinerama-dev libXfixes-dev libXdamage-dev libXrender-dev libXrandr-dev libXcomposite-dev libXi-dev libXxf86vm-dev libxcb-dev
+Provides: %provide dev
 Requires: libX11-lib
 
 %description dev
@@ -141,7 +143,7 @@ bin components for the libX11 package.
 Summary: dev components for the libX11 package.
 Group: Binaries
 Requires: libX11-dev
-Provides: libX11-dev32 libICE-dev32 libSM-dev32 libXau-dev32 libXdmcp-dev32 libXext-dev32 libXinerama-dev32 libXfixes-dev32 libXdamage-dev32 libXrender-dev32 libXrandr-dev32 libXcomposite-dev32 libXi-dev32 libXxf86vm-dev32 libxcb-dev32
+Provides: %provide dev32
 
 %description dev32
 bin components for the libX11 package.
@@ -166,7 +168,7 @@ license components for the libX11 package.
 %package man
 Summary: man components for the libX11 package.
 Group: Default
-Provides: libX11-man libICE-man libSM-man libXau-man libXdmcp-man libXext-man libXinerama-man libXfixes-man libXdamage-man libXrender-man libXrandr-man libXcomposite-man libXi-man libXxf86vm-man libxcb-man
+Provides: %provide man
 
 %description man
 man components for the libX11 package.
