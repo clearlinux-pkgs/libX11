@@ -229,7 +229,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
 export SOURCE_DATE_EPOCH=1547509750
 export CFLAGS32="$CFLAGS -ffat-lto-objects -flto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -L/builddir/build/BUILD/output/usr/lib32 -I/builddir/build/BUILD/output/usr/include -m32"
-export CFLAGS64="$CFLAGS -Os -ffat-lto-objects -flto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -mzero-caller-saved-regs=used -L/builddir/build/BUILD/output/usr/lib64 -I/builddir/build/BUILD/output/usr/include"
+export CFLAGS64="$CFLAGS -O3 -ffat-lto-objects -flto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -mzero-caller-saved-regs=used -L/builddir/build/BUILD/output/usr/lib64 -I/builddir/build/BUILD/output/usr/include"
 export LDFLAGS32="$LDFLAGS -m32"
 export LDFLAGS64="$LDFLAGS -m64"
 export PKG_CONFIG_PATH64="/usr/lib64/pkgconfig:/builddir/build/BUILD/output/usr/lib64/pkgconfig"
