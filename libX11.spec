@@ -55,6 +55,28 @@ Source150: https://xorg.freedesktop.org/releases/individual/lib/libxshmfence-1.3
 
 Source200: https://xorg.freedesktop.org/releases/individual/xcb/libxcb-1.13.1.tar.gz
 
+%global LIB210 libxcb-util
+Source210: http://xcb.freedesktop.org/dist/xcb-util-0.4.0.tar.gz
+
+# %global LIB220 libxcb-cursor
+# Source220: https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.3.tar.gz
+
+%global LIB230 libxcb-image
+Source230: https://xcb.freedesktop.org/dist/xcb-util-image-0.4.0.tar.bz2
+
+%global LIB240 libxcb-keysyms
+Source240: http://xcb.freedesktop.org/dist/xcb-util-keysyms-0.4.0.tar.gz
+
+%global LIB250 libxcb-render-util
+Source250: https://xcb.freedesktop.org/dist/xcb-util-renderutil-0.3.9.tar.gz
+
+%global LIB260 libxcb-icccm
+%global LIB260_EXTRA64 output/usr/lib64/libxcb-ewmh.a
+%global LIB260_EXTRA32 output/usr/lib32/libxcb-ewmh.a
+Source260: https://xcb.freedesktop.org/dist/xcb-util-wm-0.4.1.tar.bz2
+
+#%global LIB270 libxcb-xrm
+#Source270: https://github.com/Airblader/xcb-util-xrm/releases/download/v1.3/xcb-util-xrm-1.3.tar.bz2
 
 Group    : Development/Tools
 License  : MIT
@@ -93,7 +115,7 @@ BuildRequires : libpthread-stubs-dev
 
 BuildRequires : xmlto
 
-%define provide() libX11-%1 libICE-%1 libSM-%1 libXau-%1 libXdmcp-%1 libXext-%1 libXinerama-%1 libXfixes-%1 libXdamage-%1 libXrender-%1 libXrandr-%1 libXcomposite-%1 libXi-%1 libXxf86vm-%1 libxshmfence-%1 libxcb-%1
+%define provide() libX11-%1 libICE-%1 libSM-%1 libXau-%1 libXdmcp-%1 libXext-%1 libXinerama-%1 libXfixes-%1 libXdamage-%1 libXrender-%1 libXrandr-%1 libXcomposite-%1 libXi-%1 libXxf86vm-%1 libxshmfence-%1 libxcb-%1 xcb-util-image-%1 xcb-util-keysyms-%1 xcb-util-renderutil-%1 xcb-util-wm-%1 xcb-util-%1
 
 Provides: %provide data
 
@@ -177,7 +199,8 @@ BuildOne() {
 	mv $d $d-64
 	pushd $d-64
 		CFLAGS="$CFLAGS64" LDFLAGS="$LDFLAGS64" PKG_CONFIG_LIB="$PKG_CONFIG_LIB64" PKG_CONFIG_PATH="$PKG_CONFIG_PATH64"	 %configure --enable-static "$@"
-		make %{?_smp_mflags}
+		LD_LIBRARY_PATH=/builddir/build/BUILD/output/usr/lib64 \
+			make %{?_smp_mflags}
 		%make_install DESTDIR=/builddir/build/BUILD/output
 		make VERBOSE=1 V=1 check || :
 	popd
@@ -185,7 +208,8 @@ BuildOne() {
 	mv $d $d-32
 	pushd $d-32
 		CFLAGS="$CFLAGS32" LDFLAGS="$LDFLAGS32" PKG_CONFIG_LIB="$PKG_CONFIG_LIB32" PKG_CONFIG_PATH="$PKG_CONFIG_PATH32" %configure --enable-static --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu "$@"
-		make %{?_smp_mflags}
+		LD_LIBRARY_PATH=/builddir/build/BUILD/output/usr/lib32 \
+			make %{?_smp_mflags}
 		%make_install32 DESTDIR=/builddir/build/BUILD/output
 	popd
 	
@@ -242,6 +266,12 @@ BuildOne %{SOURCE150}
 # xcb
 BuildOne %{SOURCE200} --enable-dri3 --with-queue-size=32768 PYTHON=/usr/bin/python2
 
+# xcb util libs
+BuildOne %{SOURCE210}
+BuildOne %{SOURCE230}
+BuildOne %{SOURCE240}
+BuildOne %{SOURCE250}
+BuildOne %{SOURCE260}
 
 mkdir 64/
 gcc $CFLAGS $LDFLAGS -m64 -o 64/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive \
@@ -261,8 +291,13 @@ gcc $CFLAGS $LDFLAGS -m64 -o 64/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,l
 	output/usr/lib64/%{LIB140}.a \
 	output/usr/lib64/%{LIB150}.a \
 	output/usr/lib64/%{LIB200}.a %{LIB200_EXTRA64} \
-	-Wl,--no-whole-archive -shared  -ldl
-	
+	output/usr/lib64/%{LIB210}.a \
+	output/usr/lib64/%{LIB230}.a \
+	output/usr/lib64/%{LIB240}.a \
+	output/usr/lib64/%{LIB250}.a \
+	output/usr/lib64/%{LIB260}.a %{LIB260_EXTRA64} \
+	-Wl,--no-whole-archive -shared	-ldl
+
 ln -s libX11.so.6.3.0 64/libX11.so
 ln -s libX11.so.6.3.0 64/libX11.so.6
 
@@ -287,6 +322,11 @@ gcc $CFLAGS $LDFLAGS -m32 -o 32/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,l
 	output/usr/lib32/%{LIB140}.a \
 	output/usr/lib32/%{LIB150}.a \
 	output/usr/lib32/%{LIB200}.a %{LIB200_EXTRA32} \
+	output/usr/lib32/%{LIB210}.a \
+	output/usr/lib32/%{LIB230}.a \
+	output/usr/lib32/%{LIB240}.a \
+	output/usr/lib32/%{LIB250}.a \
+	output/usr/lib32/%{LIB260}.a %{LIB260_EXTRA32} \
 	-Wl,--no-whole-archive -shared	 -ldl
 
 ln -s libX11.so.6.3.0 32/libX11.so
