@@ -5,63 +5,48 @@ Release  : 406
 Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.7.tar.gz
 
 %global LIB10 libICE
-%global VER10 1.0.9
 Source10 : https://xorg.freedesktop.org/releases/individual/lib/libICE-1.0.9.tar.gz
 
 %global LIB20 libSM
-%global VER20 1.2.3
 Source20 : https://xorg.freedesktop.org/releases/individual/lib/libSM-1.2.3.tar.gz
 
 %global LIB30 libXau
-%global VER30 1.0.8
 Source30 : https://xorg.freedesktop.org/releases/individual/lib/libXau-1.0.8.tar.gz
 
 %global LIB40 libXdmcp
-%global VER40 1.1.2
 Source40 : https://xorg.freedesktop.org/releases/individual/lib/libXdmcp-1.1.2.tar.gz
 
 %global LIB50 libX11
-%global VER50 1.6.7
 Source50 : https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.7.tar.gz
 
 %global LIB60 libXext
-%global VER60 1.3.3
 Source60 : https://xorg.freedesktop.org/releases/individual/lib/libXext-1.3.3.tar.gz
 
 %global LIB70 libXinerama
-%global VER70 1.1.4
 Source70 : https://xorg.freedesktop.org/releases/individual/lib/libXinerama-1.1.4.tar.gz
 
 %global LIB80 libXfixes
-%global VER80 5.0.3
 Source80 : https://xorg.freedesktop.org/releases/individual/lib/libXfixes-5.0.3.tar.gz
 
 %global LIB90 libXdamage
-%global VER90 1.1.4
 Source90 : https://xorg.freedesktop.org/releases/individual/lib/libXdamage-1.1.4.tar.gz
 
 %global LIB100 libXrender
-%global VER100 0.9.10
 Source100: https://xorg.freedesktop.org/releases/individual/lib/libXrender-0.9.10.tar.gz
 
 %global LIB110 libXrandr
-%global VER110 1.5.1
 Source110: https://xorg.freedesktop.org/releases/individual/lib/libXrandr-1.5.1.tar.gz
 
 %global LIB120 libXcomposite
-%global VER120 0.4.4
 Source120: https://xorg.freedesktop.org/releases/individual/lib/libXcomposite-0.4.4.tar.gz
 
 %global LIB130 libXi
-%global VER130 1.7.9
 Source130: https://xorg.freedesktop.org/releases/individual/lib/libXi-1.7.9.tar.gz
 
 %global LIB140 libXxf86vm
-%global VER140 1.1.4
 Source140: https://xorg.freedesktop.org/releases/individual/lib/libXxf86vm-1.1.4.tar.gz
 
 %global LIB200 libxcb
-%global VER200 1.13.1
 %global LIB200_EXTRA64 output/usr/lib64/libxcb-composite.a output/usr/lib64/libxcb-damage.a  output/usr/lib64/libxcb-dpms.a output/usr/lib64/libxcb-dri2.a output/usr/lib64/libxcb-dri3.a output/usr/lib64/libxcb-glx.a  output/usr/lib64/libxcb-present.a output/usr/lib64/libxcb-randr.a output/usr/lib64/libxcb-record.a output/usr/lib64/libxcb-render.a output/usr/lib64/libxcb-res.a output/usr/lib64/libxcb-screensaver.a output/usr/lib64/libxcb-shape.a output/usr/lib64/libxcb-shm.a output/usr/lib64/libxcb-sync.a output/usr/lib64/libxcb-xf86dri.a output/usr/lib64/libxcb-xfixes.a output/usr/lib64/libxcb-xinerama.a output/usr/lib64/libxcb-xinput.a output/usr/lib64/libxcb-xkb.a output/usr/lib64/libxcb-xtest.a output/usr/lib64/libxcb-xv.a output/usr/lib64/libxcb-xvmc.a output/usr/lib64/libX11-xcb.a
 %global LIB200_EXTRA32 output/usr/lib32/libxcb-composite.a output/usr/lib32/libxcb-damage.a  output/usr/lib32/libxcb-dpms.a output/usr/lib32/libxcb-dri2.a output/usr/lib32/libxcb-dri3.a output/usr/lib32/libxcb-glx.a  output/usr/lib32/libxcb-present.a output/usr/lib32/libxcb-randr.a output/usr/lib32/libxcb-record.a output/usr/lib32/libxcb-render.a output/usr/lib32/libxcb-res.a output/usr/lib32/libxcb-screensaver.a output/usr/lib32/libxcb-shape.a output/usr/lib32/libxcb-shm.a output/usr/lib32/libxcb-sync.a output/usr/lib32/libxcb-xf86dri.a output/usr/lib32/libxcb-xfixes.a output/usr/lib32/libxcb-xinerama.a output/usr/lib32/libxcb-xinput.a output/usr/lib32/libxcb-xkb.a output/usr/lib32/libxcb-xtest.a output/usr/lib32/libxcb-xv.a output/usr/lib32/libxcb-xvmc.a output/usr/lib32/libX11-xcb.a
 
@@ -179,21 +164,24 @@ man components for the libX11 package.
 
 %build
 
-
 BuildOne() {
-	echo Building $1 $2 $3
-	tar -axf $1
-	mv $2 $2-64
-	pushd $2-64
-		CFLAGS="$CFLAGS64" LDFLAGS="$LDFLAGS64" PKG_CONFIG_LIB="$PKG_CONFIG_LIB64" PKG_CONFIG_PATH="$PKG_CONFIG_PATH64"  %configure --enable-static ${@:3}
+	echo Building $1 $2
+	n=$1
+	tar -axf $n
+	d=${n##*/}
+	d=${d/.tar*}
+	shift
+	mv $d $d-64
+	pushd $d-64
+		CFLAGS="$CFLAGS64" LDFLAGS="$LDFLAGS64" PKG_CONFIG_LIB="$PKG_CONFIG_LIB64" PKG_CONFIG_PATH="$PKG_CONFIG_PATH64"	 %configure --enable-static "$@"
 		make %{?_smp_mflags}
 		%make_install DESTDIR=/builddir/build/BUILD/output
 		make VERBOSE=1 V=1 check || :
 	popd
-	tar -axf $1
-	mv $2 $2-32
-	pushd $2-32
-		CFLAGS="$CFLAGS32" LDFLAGS="$LDFLAGS32" PKG_CONFIG_LIB="$PKG_CONFIG_LIB32" PKG_CONFIG_PATH="$PKG_CONFIG_PATH32" %configure --enable-static --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu   ${@:3}
+	tar -axf $n
+	mv $d $d-32
+	pushd $d-32
+		CFLAGS="$CFLAGS32" LDFLAGS="$LDFLAGS32" PKG_CONFIG_LIB="$PKG_CONFIG_LIB32" PKG_CONFIG_PATH="$PKG_CONFIG_PATH32" %configure --enable-static --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu "$@"
 		make %{?_smp_mflags}
 		%make_install32 DESTDIR=/builddir/build/BUILD/output
 	popd
@@ -226,29 +214,29 @@ export PKG_CONFIG_LIBDIR32="/usr/lib32/pkgconfig:/builddir/build/BUILD/output/us
 mkdir -p output
 
 
-BuildOne %{SOURCE10} %{LIB10}-%{VER10} --disable-tcp-transport
-BuildOne %{SOURCE20} %{LIB20}-%{VER20}
-BuildOne %{SOURCE30} %{LIB30}-%{VER30}
-BuildOne %{SOURCE40} %{LIB40}-%{VER40}
+BuildOne %{SOURCE10} --disable-tcp-transport
+BuildOne %{SOURCE20}
+BuildOne %{SOURCE30}
+BuildOne %{SOURCE40}
 
 # xcb round one to bootstrap
-BuildOne %{SOURCE200} %{LIB200}-%{VER200} --disable-dri3 --with-queue-size=32768 PYTHON=/usr/bin/python2 
+BuildOne %{SOURCE200} --disable-dri3 --with-queue-size=32768 PYTHON=/usr/bin/python2 
 
 
-BuildOne %{SOURCE50} %{LIB50}-%{VER50}
-BuildOne %{SOURCE60} %{LIB60}-%{VER60}
-BuildOne %{SOURCE70} %{LIB70}-%{VER70}
-BuildOne %{SOURCE80} %{LIB80}-%{VER80}
-BuildOne %{SOURCE90} %{LIB90}-%{VER90}
-BuildOne %{SOURCE100} %{LIB100}-%{VER100}
-BuildOne %{SOURCE110} %{LIB110}-%{VER110}
-BuildOne %{SOURCE120} %{LIB120}-%{VER120}
-BuildOne %{SOURCE130} %{LIB130}-%{VER130}
-BuildOne %{SOURCE140} %{LIB140}-%{VER140}
+BuildOne %{SOURCE50}
+BuildOne %{SOURCE60}
+BuildOne %{SOURCE70}
+BuildOne %{SOURCE80}
+BuildOne %{SOURCE90}
+BuildOne %{SOURCE100}
+BuildOne %{SOURCE110}
+BuildOne %{SOURCE120}
+BuildOne %{SOURCE130}
+BuildOne %{SOURCE140}
 
 
 # xcb
-BuildOne %{SOURCE200} %{LIB200}-%{VER200} --enable-dri3 --with-queue-size=32768 PYTHON=/usr/bin/python2
+BuildOne %{SOURCE200} --enable-dri3 --with-queue-size=32768 PYTHON=/usr/bin/python2
 
 
 mkdir 64/
