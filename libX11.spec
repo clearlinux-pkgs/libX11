@@ -1,6 +1,6 @@
 Name     : libX11
 Version  : 1.6.7
-Release  : 408
+Release  : 409
 
 Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.7.tar.gz
 
@@ -82,9 +82,9 @@ Group    : Development/Tools
 License  : MIT
 Requires: libX11-doc
 Summary: superset xorg libraries
-
-
-
+Requires: libX11-lib = %{version}-%{release}
+Requires: libX11-license = %{version}-%{release}
+Requires: libX11-man = %{version}-%{release}
 BuildRequires : gcc-dev32
 BuildRequires : gcc-libgcc32
 BuildRequires : gcc-libstdc++32
@@ -115,9 +115,9 @@ BuildRequires : libpthread-stubs-dev
 
 BuildRequires : xmlto
 
-%define provide() libX11-%1 libICE-%1 libSM-%1 libXau-%1 libXdmcp-%1 libXext-%1 libXinerama-%1 libXfixes-%1 libXdamage-%1 libXrender-%1 libXrandr-%1 libXcomposite-%1 libXi-%1 libXxf86vm-%1 libxshmfence-%1 libxcb-%1 xcb-util-image-%1 xcb-util-keysyms-%1 xcb-util-renderutil-%1 xcb-util-wm-%1 xcb-util-%1
-
-Provides: %provide data
+%define provide() libX11%1 libICE%1 libSM%1 libXau%1 libXdmcp%1 libXext%1 libXinerama%1 libXfixes%1 libXdamage%1 libXrender%1 libXrandr%1 libXcomposite%1 libXi%1 libXxf86vm%1 libxshmfence%1 libxcb%1 xcb-util-image%1 xcb-util-keysyms%1 xcb-util-renderutil%1 xcb-util-wm%1 xcb-util%1
+Provides: %provide %{nil}
+Provides: %provide -- -data
 
 %description
 libX11 is a grouping of various xorg small libraries into a master .so
@@ -127,7 +127,7 @@ for effciency reasons
 %package lib
 Summary: lib components for the libX11 package.
 Group: Binaries
-Provides: %provide lib
+Provides: %provide -- -lib
 
 %description lib
 bin components for the libX11 package.
@@ -135,7 +135,7 @@ bin components for the libX11 package.
 %package lib32
 Summary: lib components for the libX11 package.
 Group: Binaries
-Provides: %provide lib32
+Provides: %provide -- -lib32
 
 %description lib32
 bin components for the libX11 package.
@@ -143,7 +143,7 @@ bin components for the libX11 package.
 %package dev
 Summary: dev components for the libX11 package.
 Group: Binaries
-Provides: %provide dev
+Provides: %provide -- -dev
 Requires: libX11-lib
 
 %description dev
@@ -153,7 +153,7 @@ bin components for the libX11 package.
 Summary: dev components for the libX11 package.
 Group: Binaries
 Requires: libX11-dev
-Provides: %provide dev32
+Provides: %provide -- -dev32
 
 %description dev32
 bin components for the libX11 package.
@@ -178,7 +178,7 @@ license components for the libX11 package.
 %package man
 Summary: man components for the libX11 package.
 Group: Default
-Provides: %provide man
+Provides: %provide -- -man
 
 %description man
 man components for the libX11 package.
@@ -235,7 +235,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547509750
+export SOURCE_DATE_EPOCH=1547586456
 export CFLAGS32="$CFLAGS -ffat-lto-objects -flto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -L/builddir/build/BUILD/output/usr/lib32 -I/builddir/build/BUILD/output/usr/include -m32"
 export CFLAGS64="$CFLAGS -O3 -ffat-lto-objects -flto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -mzero-caller-saved-regs=used -L/builddir/build/BUILD/output/usr/lib64 -I/builddir/build/BUILD/output/usr/include"
 export LDFLAGS32="$LDFLAGS -m32"
