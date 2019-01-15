@@ -366,10 +366,9 @@ for i in `find output/usr/lib64/*.so.?  -printf "%f\n"` ; do
 done
 
 # for each of the sub library .so files, create a linker script
-for i in `find output/usr/lib64/*.so  -printf "%f\n"` ; do
-	echo "INPUT(libX11.so.6)" > %{buildroot}/usr/lib64/$i
-	echo "INPUT(libX11.so.6)" > %{buildroot}/usr/lib32/$i
-done
+echo "INPUT(libX11.so.6)" | tee > /dev/null \
+	`find output/usr/lib64/*.so  -printf "%{buildroot}/usr/lib64/%f\n"` \
+	`find output/usr/lib32/*.so  -printf "%{buildroot}/usr/lib32/%f\n"`
 
 cp -a 64/libX11.so*  %{buildroot}/usr/lib64
 cp -a 32/libX11.so*  %{buildroot}/usr/lib32
