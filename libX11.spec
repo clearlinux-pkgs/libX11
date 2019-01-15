@@ -196,6 +196,14 @@ BuildOne() {
 	d=${n##*/}
 	d=${d/.tar*}
 	shift
+	mv $d $d-avx2
+	pushd $d-avx2
+		CFLAGS="$CFLAGS64 -march=haswell" LDFLAGS="$LDFLAGS64" PKG_CONFIG_LIB="$PKG_CONFIG_LIB64" PKG_CONFIG_PATH="$PKG_CONFIG_PATH64"	 %configure --enable-static --cache-file=${CACHEFILE}-avx2 "$@"
+		LD_LIBRARY_PATH=/builddir/build/BUILD/output/usr/lib64 \
+			make %{?_smp_mflags}
+		%make_install DESTDIR=/builddir/build/BUILD/output-avx2
+	popd
+	tar -axf $n
 	mv $d $d-64
 	pushd $d-64
 		CFLAGS="$CFLAGS64" LDFLAGS="$LDFLAGS64" PKG_CONFIG_LIB="$PKG_CONFIG_LIB64" PKG_CONFIG_PATH="$PKG_CONFIG_PATH64"	 %configure --enable-static --cache-file=${CACHEFILE}64 "$@"
@@ -238,8 +246,8 @@ export PKG_CONFIG_LIBDIR64="/usr/lib64/pkgconfig:/builddir/build/BUILD/output/us
 export PKG_CONFIG_LIBDIR32="/usr/lib32/pkgconfig:/builddir/build/BUILD/output/usr/lib32/pkgconfig"
 
 
-mkdir -p output
-touch cachefile64 cachefile32
+mkdir -p output output-avx2
+touch cachefile-avx2 cachefile64 cachefile32
 CACHEFILE=$PWD/cachefile
 
 
@@ -275,9 +283,13 @@ BuildOne %{SOURCE240}
 BuildOne %{SOURCE250}
 BuildOne %{SOURCE260}
 
-mkdir 64/
-gcc $CFLAGS $LDFLAGS -m64 -o 64/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive \
-	output/usr/lib64/%{LIB10}.a \
+# Put the haswell files in place
+mkdir output/usr/lib64/haswell
+mv output-avx2/usr/lib64/*.so* output-avx2/usr/lib64/*.a output/usr/lib64/haswell
+
+# Now link the libraries
+mkdir -p 64/haswell
+libs="output/usr/lib64/%{LIB10}.a \
 	output/usr/lib64/%{LIB20}.a \
 	output/usr/lib64/%{LIB30}.a \
 	output/usr/lib64/%{LIB40}.a \
@@ -297,39 +309,18 @@ gcc $CFLAGS $LDFLAGS -m64 -o 64/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,l
 	output/usr/lib64/%{LIB230}.a \
 	output/usr/lib64/%{LIB240}.a \
 	output/usr/lib64/%{LIB250}.a \
-	output/usr/lib64/%{LIB260}.a %{LIB260_EXTRA64} \
-	-Wl,--no-whole-archive -shared	-ldl
+	output/usr/lib64/%{LIB260}.a %{LIB260_EXTRA64}"
+
+gcc $CFLAGS $LDFLAGS -m64 -o 64/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive $libs -Wl,--no-whole-archive -shared	-ldl
+gcc $CFLAGS $LDFLAGS -march=haswell -m64 -o 64/haswell/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive ${libs//64/64/haswell} -Wl,--no-whole-archive -shared	-ldl
 
 ln -s libX11.so.6.3.0 64/libX11.so
 ln -s libX11.so.6.3.0 64/libX11.so.6
-
-
-
+ln -s libX11.so.6.3.0 64/haswell/libX11.so
+ln -s libX11.so.6.3.0 64/haswell/libX11.so.6
 
 mkdir 32/
-gcc $CFLAGS $LDFLAGS -m32 -o 32/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive \
-	output/usr/lib32/%{LIB10}.a \
-	output/usr/lib32/%{LIB20}.a \
-	output/usr/lib32/%{LIB30}.a \
-	output/usr/lib32/%{LIB40}.a \
-	output/usr/lib32/%{LIB50}.a \
-	output/usr/lib32/%{LIB60}.a \
-	output/usr/lib32/%{LIB70}.a \
-	output/usr/lib32/%{LIB80}.a \
-	output/usr/lib32/%{LIB90}.a \
-	output/usr/lib32/%{LIB100}.a \
-	output/usr/lib32/%{LIB110}.a \
-	output/usr/lib32/%{LIB120}.a \
-	output/usr/lib32/%{LIB130}.a \
-	output/usr/lib32/%{LIB140}.a \
-	output/usr/lib32/%{LIB150}.a \
-	output/usr/lib32/%{LIB200}.a %{LIB200_EXTRA32} \
-	output/usr/lib32/%{LIB210}.a \
-	output/usr/lib32/%{LIB230}.a \
-	output/usr/lib32/%{LIB240}.a \
-	output/usr/lib32/%{LIB250}.a \
-	output/usr/lib32/%{LIB260}.a %{LIB260_EXTRA32} \
-	-Wl,--no-whole-archive -shared	 -ldl
+gcc $CFLAGS $LDFLAGS -m32 -o 32/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive ${libs//64/32} -Wl,--no-whole-archive -shared	 -ldl
 
 ln -s libX11.so.6.3.0 32/libX11.so
 ln -s libX11.so.6.3.0 32/libX11.so.6
@@ -375,7 +366,7 @@ echo "INPUT(libX11.so.6)" | tee > /dev/null \
 	`find output/usr/lib64/*.so  -printf "%{buildroot}/usr/lib64/%f\n"` \
 	`find output/usr/lib32/*.so  -printf "%{buildroot}/usr/lib32/%f\n"`
 
-cp -a 64/libX11.so*  %{buildroot}/usr/lib64
+cp -a 64/libX11.so* 64/haswell  %{buildroot}/usr/lib64
 cp -a 32/libX11.so*  %{buildroot}/usr/lib32
 
 popd
@@ -385,7 +376,7 @@ pushd ..
 
 # for each of the sub library .so.X files, verify its symbols are
 # present in the master library
-for abi in 64 32; do
+for abi in 64 64/haswell 32; do
     nm -D --defined $abi/libX11.so | \
         cut -d' ' -f2- | sort > output/usr/lib$abi/symlist.master
     find output/usr/lib$abi -name 'lib*.so.*' -type f | xargs -n1 nm -D --defined | \
@@ -410,6 +401,7 @@ popd
 %defattr(-,root,root,-)
 /usr/include
 /usr/lib64/*.so
+/usr/lib64/haswell/*.so
 /usr/lib64/pkgconfig/*
 
 %files dev32
@@ -420,6 +412,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/*.so.*
+/usr/lib64/haswell/*.so.*
 
 %files lib32
 %defattr(-,root,root,-)
