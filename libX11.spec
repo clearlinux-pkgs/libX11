@@ -198,7 +198,7 @@ BuildOne() {
 	shift
 	mv $d $d-64
 	pushd $d-64
-		CFLAGS="$CFLAGS64" LDFLAGS="$LDFLAGS64" PKG_CONFIG_LIB="$PKG_CONFIG_LIB64" PKG_CONFIG_PATH="$PKG_CONFIG_PATH64"	 %configure --enable-static "$@"
+		CFLAGS="$CFLAGS64" LDFLAGS="$LDFLAGS64" PKG_CONFIG_LIB="$PKG_CONFIG_LIB64" PKG_CONFIG_PATH="$PKG_CONFIG_PATH64"	 %configure --enable-static --cache-file=${CACHEFILE}64 "$@"
 		LD_LIBRARY_PATH=/builddir/build/BUILD/output/usr/lib64 \
 			make %{?_smp_mflags}
 		%make_install DESTDIR=/builddir/build/BUILD/output
@@ -207,7 +207,7 @@ BuildOne() {
 	tar -axf $n
 	mv $d $d-32
 	pushd $d-32
-		CFLAGS="$CFLAGS32" LDFLAGS="$LDFLAGS32" PKG_CONFIG_LIB="$PKG_CONFIG_LIB32" PKG_CONFIG_PATH="$PKG_CONFIG_PATH32" %configure --enable-static --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu "$@"
+		CFLAGS="$CFLAGS32" LDFLAGS="$LDFLAGS32" PKG_CONFIG_LIB="$PKG_CONFIG_LIB32" PKG_CONFIG_PATH="$PKG_CONFIG_PATH32" %configure --enable-static --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu  --cache-file=${CACHEFILE}32 "$@"
 		LD_LIBRARY_PATH=/builddir/build/BUILD/output/usr/lib32 \
 			make %{?_smp_mflags}
 		%make_install32 DESTDIR=/builddir/build/BUILD/output
@@ -239,6 +239,8 @@ export PKG_CONFIG_LIBDIR32="/usr/lib32/pkgconfig:/builddir/build/BUILD/output/us
 
 
 mkdir -p output
+touch cachefile64 cachefile32
+CACHEFILE=$PWD/cachefile
 
 
 BuildOne %{SOURCE10} --disable-tcp-transport
