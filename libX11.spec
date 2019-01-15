@@ -380,6 +380,25 @@ cp -a 32/libX11.so*  %{buildroot}/usr/lib32
 
 popd
 
+%check
+pushd ..
+
+# for each of the sub library .so.X files, verify its symbols are
+# present in the master library
+for abi in 64 32; do
+    nm -D --defined $abi/libX11.so | \
+        cut -d' ' -f2- | sort > output/usr/lib$abi/symlist.master
+    find output/usr/lib$abi -name 'lib*.so.*' -type f | xargs -n1 nm -D --defined | \
+        cut -d' ' -f2- | sort -u > output/usr/lib$abi/symlist.sub
+    comm -23 output/usr/lib$abi/symlist.{master,sub} > symdiff
+    if [ -s symdiff ]; then
+        echo "Symbols found in sub-library but not in master library:" >&2
+        cat symdiff >&2
+        exit 1
+    fi
+done
+
+popd
 
 %files
 %defattr(-,root,root,-)
