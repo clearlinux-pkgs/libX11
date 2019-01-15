@@ -1,6 +1,6 @@
 Name     : libX11
 Version  : 1.6.7
-Release  : 407
+Release  : 408
 
 Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.7.tar.gz
 
@@ -59,7 +59,7 @@ Source200: https://xorg.freedesktop.org/releases/individual/xcb/libxcb-1.13.1.ta
 Source210: http://xcb.freedesktop.org/dist/xcb-util-0.4.0.tar.gz
 
 # %global LIB220 libxcb-cursor
-# Source220: https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.3.tar.gz
+# xxxxx220: https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.3.tar.gz
 
 %global LIB230 libxcb-image
 Source230: https://xcb.freedesktop.org/dist/xcb-util-image-0.4.0.tar.bz2
@@ -75,8 +75,8 @@ Source250: https://xcb.freedesktop.org/dist/xcb-util-renderutil-0.3.9.tar.gz
 %global LIB260_EXTRA32 output/usr/lib32/libxcb-ewmh.a
 Source260: https://xcb.freedesktop.org/dist/xcb-util-wm-0.4.1.tar.bz2
 
-#%global LIB270 libxcb-xrm
-#Source270: https://github.com/Airblader/xcb-util-xrm/releases/download/v1.3/xcb-util-xrm-1.3.tar.bz2
+# %global LIB270 libxcb-xrm
+# xxxxx270: https://github.com/Airblader/xcb-util-xrm/releases/download/v1.3/xcb-util-xrm-1.3.tar.bz2
 
 Group    : Development/Tools
 License  : MIT
