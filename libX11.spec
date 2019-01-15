@@ -360,10 +360,13 @@ popd
 fi
 
 # for each of the sub library .so.X files, create a small wrapper
-for i in `find output/usr/lib64/*.so.?  -printf "%f\n"` ; do
-	gcc $CFLAGS $LDFLAGS -o %{buildroot}/usr/lib64/$i  -Wl,--no-as-needed -Wl,--no-undefined  -Wl,-soname,$i -Wl,--whole-archive -Wl,--no-whole-archive  -L64/ -lX11 -shared 
-	gcc $CFLAGS $LDFLAGS -m32 -o %{buildroot}/usr/lib32/$i  -Wl,--no-as-needed -Wl,--no-undefined  -Wl,-soname,$i -Wl,--whole-archive -Wl,--no-whole-archive  -L32/ -lX11 -shared 
-done
+find output/usr/lib64 -name 'lib*.so.?' -printf "%f\n" | \
+    xargs -P`getconf _NPROCESSORS_ONLN` -rtI@ \
+	gcc $CFLAGS $LDFLAGS -o %{buildroot}/usr/lib64/@  -Wl,--no-as-needed -Wl,--no-undefined  -Wl,-soname,@  -L64/ -lX11 -shared
+
+find output/usr/lib32 -name 'lib*.so.?'  -printf "%f\n" | \
+    xargs -P`getconf _NPROCESSORS_ONLN` -rtI@ \
+	gcc $CFLAGS $LDFLAGS -m32 -o %{buildroot}/usr/lib32/@  -Wl,--no-as-needed -Wl,--no-undefined  -Wl,-soname,@  -L32/ -lX11 -shared
 
 # for each of the sub library .so files, create a linker script
 echo "INPUT(libX11.so.6)" | tee > /dev/null \
