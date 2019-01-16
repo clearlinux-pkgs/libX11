@@ -83,7 +83,6 @@ License  : MIT
 Requires: libX11-doc
 Summary: superset xorg libraries
 Requires: libX11-lib = %{version}-%{release}
-Requires: libX11-license = %{version}-%{release}
 BuildRequires : gcc-dev32
 BuildRequires : gcc-libgcc32
 BuildRequires : gcc-libstdc++32
