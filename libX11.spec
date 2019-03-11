@@ -151,6 +151,7 @@ bin components for the libX11 package.
 Summary: dev components for the libX11 package.
 Group: Binaries
 Requires: libX11-dev
+Requires: libX11-lib32
 Provides: %provide -- -dev32
 
 %description dev32
