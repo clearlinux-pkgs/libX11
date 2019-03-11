@@ -327,7 +327,7 @@ tar -axf %{SOURCE0}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=153420600
+export SOURCE_DATE_EPOCH=1552311600 
 rm -rf %{buildroot}
 
 pushd ..
