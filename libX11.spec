@@ -11,16 +11,16 @@ Source10 : https://xorg.freedesktop.org/releases/individual/lib/libICE-1.0.9.tar
 Source20 : https://xorg.freedesktop.org/releases/individual/lib/libSM-1.2.3.tar.gz
 
 %global LIB30 libXau
-Source30 : https://xorg.freedesktop.org/releases/individual/lib/libXau-1.0.8.tar.gz
+Source30 : https://xorg.freedesktop.org/releases/individual/lib/libXau-1.0.9.tar.gz
 
 %global LIB40 libXdmcp
-Source40 : https://xorg.freedesktop.org/releases/individual/lib/libXdmcp-1.1.2.tar.gz
+Source40 : https://xorg.freedesktop.org/releases/individual/lib/libXdmcp-1.1.3.tar.gz
 
 %global LIB50 libX11
 Source50 : https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.7.tar.gz
 
 %global LIB60 libXext
-Source60 : https://xorg.freedesktop.org/releases/individual/lib/libXext-1.3.3.tar.gz
+Source60 : https://xorg.freedesktop.org/releases/individual/lib/libXext-1.3.4.tar.gz
 
 %global LIB70 libXinerama
 Source70 : https://xorg.freedesktop.org/releases/individual/lib/libXinerama-1.1.4.tar.gz
@@ -29,7 +29,7 @@ Source70 : https://xorg.freedesktop.org/releases/individual/lib/libXinerama-1.1.
 Source80 : https://xorg.freedesktop.org/releases/individual/lib/libXfixes-5.0.3.tar.gz
 
 %global LIB90 libXdamage
-Source90 : https://xorg.freedesktop.org/releases/individual/lib/libXdamage-1.1.4.tar.gz
+Source90 : https://xorg.freedesktop.org/releases/individual/lib/libXdamage-1.1.5.tar.gz
 
 %global LIB100 libXrender
 Source100: https://xorg.freedesktop.org/releases/individual/lib/libXrender-0.9.10.tar.gz
@@ -38,7 +38,7 @@ Source100: https://xorg.freedesktop.org/releases/individual/lib/libXrender-0.9.1
 Source110: https://xorg.freedesktop.org/releases/individual/lib/libXrandr-1.5.1.tar.gz
 
 %global LIB120 libXcomposite
-Source120: https://xorg.freedesktop.org/releases/individual/lib/libXcomposite-0.4.4.tar.gz
+Source120: https://xorg.freedesktop.org/releases/individual/lib/libXcomposite-0.4.5.tar.gz
 
 %global LIB130 libXi
 Source130: https://xorg.freedesktop.org/releases/individual/lib/libXi-1.7.9.tar.gz
