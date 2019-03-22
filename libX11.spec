@@ -35,7 +35,7 @@ Source90 : https://xorg.freedesktop.org/releases/individual/lib/libXdamage-1.1.5
 Source100: https://xorg.freedesktop.org/releases/individual/lib/libXrender-0.9.10.tar.gz
 
 %global LIB110 libXrandr
-Source110: https://xorg.freedesktop.org/releases/individual/lib/libXrandr-1.5.1.tar.gz
+Source110: https://xorg.freedesktop.org/releases/individual/lib/libXrandr-1.5.2.tar.gz
 
 %global LIB120 libXcomposite
 Source120: https://xorg.freedesktop.org/releases/individual/lib/libXcomposite-0.4.5.tar.gz
