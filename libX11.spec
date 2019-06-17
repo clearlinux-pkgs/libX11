@@ -1,5 +1,5 @@
 Name     : libX11
-Version  : 1.6.7
+Version  : 1.6.8
 Release  : 417
 
 Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.8.tar.gz
@@ -17,7 +17,7 @@ Source30 : https://xorg.freedesktop.org/releases/individual/lib/libXau-1.0.9.tar
 Source40 : https://xorg.freedesktop.org/releases/individual/lib/libXdmcp-1.1.3.tar.gz
 
 %global LIB50 libX11
-Source50 : https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.7.tar.gz
+Source50 : https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.8.tar.gz
 
 %global LIB60 libXext
 Source60 : https://xorg.freedesktop.org/releases/individual/lib/libXext-1.3.4.tar.gz
