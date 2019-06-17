@@ -2,7 +2,7 @@ Name     : libX11
 Version  : 1.6.7
 Release  : 416
 
-Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.7.tar.gz
+Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.8.tar.gz
 
 %global LIB10 libICE
 Source10 : https://xorg.freedesktop.org/releases/individual/lib/libICE-1.0.9.tar.gz
