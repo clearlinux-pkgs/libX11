@@ -1,6 +1,6 @@
 Name     : libX11
 Version  : 1.6.8
-Release  : 417
+Release  : 418
 
 Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.8.tar.gz
 
@@ -235,9 +235,9 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
 export SOURCE_DATE_EPOCH=1547586456
-export CFLAGS32="$CFLAGS -ffat-lto-objects -flto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -L/builddir/build/BUILD/output/usr/lib32 -I/builddir/build/BUILD/output/usr/include -m32"
+export CFLAGS32="$CFLAGS -ffat-lto-objects -flto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -L/builddir/build/BUILD/output/usr/lib32 -I/builddir/build/BUILD/output/usr/include -m32 -mstackrealign"
 export CFLAGS64="$CFLAGS -O3 -ffat-lto-objects -flto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -mzero-caller-saved-regs=used -L/builddir/build/BUILD/output/usr/lib64 -I/builddir/build/BUILD/output/usr/include"
-export LDFLAGS32="$LDFLAGS -m32"
+export LDFLAGS32="$LDFLAGS -m32 -mstackrealign"
 export LDFLAGS64="$LDFLAGS -m64"
 export PKG_CONFIG_PATH64="/usr/lib64/pkgconfig:/builddir/build/BUILD/output/usr/lib64/pkgconfig"
 export PKG_CONFIG_PATH32="/usr/lib32/pkgconfig:/builddir/build/BUILD/output/usr/lib32/pkgconfig"
@@ -319,7 +319,7 @@ ln -s libX11.so.6.3.0 64/haswell/libX11.so
 ln -s libX11.so.6.3.0 64/haswell/libX11.so.6
 
 mkdir 32/
-gcc $CFLAGS $LDFLAGS -m32 -o 32/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive ${libs//64/32} -Wl,--no-whole-archive -shared	 -ldl
+gcc $CFLAGS $LDFLAGS -m32 -mstackrealign -o 32/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive ${libs//64/32} -Wl,--no-whole-archive -shared	 -ldl
 
 ln -s libX11.so.6.3.0 32/libX11.so
 ln -s libX11.so.6.3.0 32/libX11.so.6
@@ -358,7 +358,7 @@ find output/usr/lib64 -name 'lib*.so.?' -printf "%f\n" | \
 
 find output/usr/lib32 -name 'lib*.so.?'  -printf "%f\n" | \
     xargs -P`getconf _NPROCESSORS_ONLN` -rtI@ \
-	gcc $CFLAGS $LDFLAGS -m32 -o %{buildroot}/usr/lib32/@  -Wl,--no-as-needed -Wl,--no-undefined  -Wl,-soname,@  -L32/ -lX11 -shared
+	gcc $CFLAGS $LDFLAGS -m32 -mstackrealign -o %{buildroot}/usr/lib32/@  -Wl,--no-as-needed -Wl,--no-undefined  -Wl,-soname,@  -L32/ -lX11 -shared
 
 # for each of the sub library .so files, create a linker script
 echo "INPUT(libX11.so.6)" | tee > /dev/null \
