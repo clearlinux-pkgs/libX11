@@ -1,6 +1,6 @@
 Name     : libX11
 Version  : 1.6.8
-Release  : 418
+Release  : 419
 
 Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.8.tar.gz
 
@@ -108,7 +108,7 @@ BuildRequires : pkgconfig(xproto)
 BuildRequires : pkgconfig(xcb-proto)
 BuildRequires : xcb-proto
 BuildRequires : asciidoc
-BuildRequires : python-core
+BuildRequires : python3
 BuildRequires : libpthread-stubs-dev
 
 BuildRequires : xmlto
@@ -256,7 +256,7 @@ BuildOne %{SOURCE30}
 BuildOne %{SOURCE40}
 
 # xcb round one to bootstrap
-BuildOne %{SOURCE200} --disable-dri3 --with-queue-size=32768 PYTHON=/usr/bin/python2 
+BuildOne %{SOURCE200} --disable-dri3 --with-queue-size=32768 PYTHON=/usr/bin/python
 
 
 BuildOne %{SOURCE50}
@@ -273,7 +273,7 @@ BuildOne %{SOURCE150}
 
 
 # xcb
-BuildOne %{SOURCE200} --enable-dri3 --with-queue-size=32768 PYTHON=/usr/bin/python2
+BuildOne %{SOURCE200} --enable-dri3 --with-queue-size=32768 PYTHON=/usr/bin/python
 
 # xcb util libs
 BuildOne %{SOURCE210}
