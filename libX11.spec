@@ -1,11 +1,11 @@
 Name     : libX11
-Version  : 1.6.8
-Release  : 419
+Version  : 1.6.9
+Release  : 420
 
-Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.8.tar.gz
+Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.9.tar.gz
 
 %global LIB10 libICE
-Source10 : https://xorg.freedesktop.org/releases/individual/lib/libICE-1.0.9.tar.gz
+Source10 : https://xorg.freedesktop.org/releases/individual/lib/libICE-1.0.10.tar.gz
 
 %global LIB20 libSM
 Source20 : https://xorg.freedesktop.org/releases/individual/lib/libSM-1.2.3.tar.gz
@@ -41,7 +41,7 @@ Source110: https://xorg.freedesktop.org/releases/individual/lib/libXrandr-1.5.2.
 Source120: https://xorg.freedesktop.org/releases/individual/lib/libXcomposite-0.4.5.tar.gz
 
 %global LIB130 libXi
-Source130: https://xorg.freedesktop.org/releases/individual/lib/libXi-1.7.9.tar.gz
+Source130: https://xorg.freedesktop.org/releases/individual/lib/libXi-1.7.10.tar.gz
 
 %global LIB140 libXxf86vm
 Source140: https://xorg.freedesktop.org/releases/individual/lib/libXxf86vm-1.1.4.tar.gz
