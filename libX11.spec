@@ -1,6 +1,6 @@
 Name     : libX11
 Version  : 1.6.9
-Release  : 421
+Release  : 422
 
 Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.6.9.tar.gz
 
