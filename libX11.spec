@@ -1,6 +1,6 @@
 Name     : libX11
 Version  : 1.7.0
-Release  : 425
+Release  : 426
 
 Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.7.0.tar.gz
 
@@ -53,7 +53,7 @@ Source150: https://xorg.freedesktop.org/releases/individual/lib/libxshmfence-1.3
 %global LIB200_EXTRA64 output/usr/lib64/libxcb-composite.a output/usr/lib64/libxcb-damage.a  output/usr/lib64/libxcb-dpms.a output/usr/lib64/libxcb-dri2.a output/usr/lib64/libxcb-dri3.a output/usr/lib64/libxcb-glx.a  output/usr/lib64/libxcb-present.a output/usr/lib64/libxcb-randr.a output/usr/lib64/libxcb-record.a output/usr/lib64/libxcb-render.a output/usr/lib64/libxcb-res.a output/usr/lib64/libxcb-screensaver.a output/usr/lib64/libxcb-shape.a output/usr/lib64/libxcb-shm.a output/usr/lib64/libxcb-sync.a output/usr/lib64/libxcb-xf86dri.a output/usr/lib64/libxcb-xfixes.a output/usr/lib64/libxcb-xinerama.a output/usr/lib64/libxcb-xinput.a output/usr/lib64/libxcb-xkb.a output/usr/lib64/libxcb-xtest.a output/usr/lib64/libxcb-xv.a output/usr/lib64/libxcb-xvmc.a output/usr/lib64/libX11-xcb.a
 %global LIB200_EXTRA32 output/usr/lib32/libxcb-composite.a output/usr/lib32/libxcb-damage.a  output/usr/lib32/libxcb-dpms.a output/usr/lib32/libxcb-dri2.a output/usr/lib32/libxcb-dri3.a output/usr/lib32/libxcb-glx.a  output/usr/lib32/libxcb-present.a output/usr/lib32/libxcb-randr.a output/usr/lib32/libxcb-record.a output/usr/lib32/libxcb-render.a output/usr/lib32/libxcb-res.a output/usr/lib32/libxcb-screensaver.a output/usr/lib32/libxcb-shape.a output/usr/lib32/libxcb-shm.a output/usr/lib32/libxcb-sync.a output/usr/lib32/libxcb-xf86dri.a output/usr/lib32/libxcb-xfixes.a output/usr/lib32/libxcb-xinerama.a output/usr/lib32/libxcb-xinput.a output/usr/lib32/libxcb-xkb.a output/usr/lib32/libxcb-xtest.a output/usr/lib32/libxcb-xv.a output/usr/lib32/libxcb-xvmc.a output/usr/lib32/libX11-xcb.a
 
-Source200: https://xorg.freedesktop.org/releases/individual/xcb/libxcb-1.13.1.tar.gz
+Source200: https://xorg.freedesktop.org/releases/individual/xcb/libxcb-1.14.tar.gz
 
 %global LIB210 libxcb-util
 Source210: http://xcb.freedesktop.org/dist/xcb-util-0.4.0.tar.gz
