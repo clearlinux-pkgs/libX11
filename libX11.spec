@@ -1,6 +1,6 @@
 Name     : libX11
 Version  : 1.7.0
-Release  : 427
+Release  : 428
 
 Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.7.0.tar.gz
 
@@ -236,7 +236,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
 export SOURCE_DATE_EPOCH=1547586456
 export CFLAGS32="$CFLAGS -ffat-lto-objects -flto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -L/builddir/build/BUILD/output/usr/lib32 -I/builddir/build/BUILD/output/usr/include -m32 -mstackrealign"
-export CFLAGS64="$CFLAGS -O3 -ffat-lto-objects -flto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -mzero-caller-saved-regs=used -L/builddir/build/BUILD/output/usr/lib64 -I/builddir/build/BUILD/output/usr/include"
+export CFLAGS64="$CFLAGS -O3 -ffat-lto-objects -flto -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fzero-call-used-regs=used -L/builddir/build/BUILD/output/usr/lib64 -I/builddir/build/BUILD/output/usr/include"
 export LDFLAGS32="$LDFLAGS -m32 -mstackrealign"
 export LDFLAGS64="$LDFLAGS -m64"
 export PKG_CONFIG_PATH64="/usr/lib64/pkgconfig:/builddir/build/BUILD/output/usr/lib64/pkgconfig"
