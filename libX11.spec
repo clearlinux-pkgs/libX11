@@ -1,8 +1,8 @@
 Name     : libX11
-Version  : 1.7.0
+Version  : 1.7.1
 Release  : 428
 
-Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.7.0.tar.gz
+Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.7.1.tar.gz
 
 %global LIB10 libICE
 Source10 : https://xorg.freedesktop.org/releases/individual/lib/libICE-1.0.10.tar.gz
@@ -256,7 +256,7 @@ BuildOne %{SOURCE30}
 BuildOne %{SOURCE40}
 
 # xcb round one to bootstrap
-BuildOne %{SOURCE200} --disable-dri3 --with-queue-size=32768 PYTHON=/usr/bin/python
+BuildOne %{SOURCE200} --disable-dri3 --with-queue-size=32768 --disable-devel-docs  PYTHON=/usr/bin/python
 
 
 BuildOne %{SOURCE50}
@@ -273,7 +273,7 @@ BuildOne %{SOURCE150}
 
 
 # xcb
-BuildOne %{SOURCE200} --enable-dri3 --with-queue-size=32768 PYTHON=/usr/bin/python
+BuildOne %{SOURCE200} --enable-dri3 --with-queue-size=32768 --disable-devel-docs PYTHON=/usr/bin/python 
 
 # xcb util libs
 BuildOne %{SOURCE210}
