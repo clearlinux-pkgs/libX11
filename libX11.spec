@@ -26,7 +26,7 @@ Source60 : https://xorg.freedesktop.org/releases/individual/lib/libXext-1.3.4.ta
 Source70 : https://xorg.freedesktop.org/releases/individual/lib/libXinerama-1.1.4.tar.gz
 
 %global LIB80 libXfixes
-Source80 : https://xorg.freedesktop.org/releases/individual/lib/libXfixes-5.0.3.tar.gz
+Source80 : https://xorg.freedesktop.org/releases/individual/lib/libXfixes-6.0.0.tar.gz
 
 %global LIB90 libXdamage
 Source90 : https://xorg.freedesktop.org/releases/individual/lib/libXdamage-1.1.5.tar.gz
