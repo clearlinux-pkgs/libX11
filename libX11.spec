@@ -2,78 +2,78 @@ Name     : libX11
 Version  : 1.7.2
 Release  : 430
 
-Source0: https://xorg.freedesktop.org/releases/individual/lib/libX11-1.7.2.tar.gz
+Source0: https://www.x.org/releases/individual/lib/libX11-1.7.2.tar.gz
 
 %global LIB10 libICE
-Source10 : https://xorg.freedesktop.org/releases/individual/lib/libICE-1.0.10.tar.gz
+Source10 : https://www.x.org/releases/individual/lib/libICE-1.0.10.tar.gz
 
 %global LIB20 libSM
-Source20 : https://xorg.freedesktop.org/releases/individual/lib/libSM-1.2.3.tar.gz
+Source20 : https://www.x.org/releases/individual/lib/libSM-1.2.3.tar.gz
 
 %global LIB30 libXau
-Source30 : https://xorg.freedesktop.org/releases/individual/lib/libXau-1.0.9.tar.gz
+Source30 : https://www.x.org/releases/individual/lib/libXau-1.0.9.tar.gz
 
 %global LIB40 libXdmcp
-Source40 : https://xorg.freedesktop.org/releases/individual/lib/libXdmcp-1.1.3.tar.gz
+Source40 : https://www.x.org/releases/individual/lib/libXdmcp-1.1.3.tar.gz
 
 %global LIB50 libX11
 Source50 : %{SOURCE0}
 
 %global LIB60 libXext
-Source60 : https://xorg.freedesktop.org/releases/individual/lib/libXext-1.3.4.tar.gz
+Source60 : https://www.x.org/releases/individual/lib/libXext-1.3.4.tar.gz
 
 %global LIB70 libXinerama
-Source70 : https://xorg.freedesktop.org/releases/individual/lib/libXinerama-1.1.4.tar.gz
+Source70 : https://www.x.org/releases/individual/lib/libXinerama-1.1.4.tar.gz
 
 %global LIB80 libXfixes
-Source80 : https://xorg.freedesktop.org/releases/individual/lib/libXfixes-6.0.0.tar.gz
+Source80 : https://www.x.org/releases/individual/lib/libXfixes-6.0.0.tar.gz
 
 %global LIB90 libXdamage
-Source90 : https://xorg.freedesktop.org/releases/individual/lib/libXdamage-1.1.5.tar.gz
+Source90 : https://www.x.org/releases/individual/lib/libXdamage-1.1.5.tar.gz
 
 %global LIB100 libXrender
-Source100: https://xorg.freedesktop.org/releases/individual/lib/libXrender-0.9.10.tar.gz
+Source100: https://www.x.org/releases/individual/lib/libXrender-0.9.10.tar.gz
 
 %global LIB110 libXrandr
-Source110: https://xorg.freedesktop.org/releases/individual/lib/libXrandr-1.5.2.tar.gz
+Source110: https://www.x.org/releases/individual/lib/libXrandr-1.5.2.tar.gz
 
 %global LIB120 libXcomposite
-Source120: https://xorg.freedesktop.org/releases/individual/lib/libXcomposite-0.4.5.tar.gz
+Source120: https://www.x.org/releases/individual/lib/libXcomposite-0.4.5.tar.gz
 
 %global LIB130 libXi
-Source130: https://xorg.freedesktop.org/releases/individual/lib/libXi-1.7.10.tar.gz
+Source130: https://www.x.org/releases/individual/lib/libXi-1.7.10.tar.gz
 
 %global LIB140 libXxf86vm
-Source140: https://xorg.freedesktop.org/releases/individual/lib/libXxf86vm-1.1.4.tar.gz
+Source140: https://www.x.org/releases/individual/lib/libXxf86vm-1.1.4.tar.gz
 
 %global LIB150 libxshmfence
-Source150: https://xorg.freedesktop.org/releases/individual/lib/libxshmfence-1.3.tar.bz2
+Source150: https://www.x.org/releases/individual/lib/libxshmfence-1.3.tar.bz2
 
 %global LIB200 libxcb
 %global LIB200_EXTRA64 output/usr/lib64/libxcb-composite.a output/usr/lib64/libxcb-damage.a  output/usr/lib64/libxcb-dpms.a output/usr/lib64/libxcb-dri2.a output/usr/lib64/libxcb-dri3.a output/usr/lib64/libxcb-glx.a  output/usr/lib64/libxcb-present.a output/usr/lib64/libxcb-randr.a output/usr/lib64/libxcb-record.a output/usr/lib64/libxcb-render.a output/usr/lib64/libxcb-res.a output/usr/lib64/libxcb-screensaver.a output/usr/lib64/libxcb-shape.a output/usr/lib64/libxcb-shm.a output/usr/lib64/libxcb-sync.a output/usr/lib64/libxcb-xf86dri.a output/usr/lib64/libxcb-xfixes.a output/usr/lib64/libxcb-xinerama.a output/usr/lib64/libxcb-xinput.a output/usr/lib64/libxcb-xkb.a output/usr/lib64/libxcb-xtest.a output/usr/lib64/libxcb-xv.a output/usr/lib64/libxcb-xvmc.a output/usr/lib64/libX11-xcb.a
 %global LIB200_EXTRA32 output/usr/lib32/libxcb-composite.a output/usr/lib32/libxcb-damage.a  output/usr/lib32/libxcb-dpms.a output/usr/lib32/libxcb-dri2.a output/usr/lib32/libxcb-dri3.a output/usr/lib32/libxcb-glx.a  output/usr/lib32/libxcb-present.a output/usr/lib32/libxcb-randr.a output/usr/lib32/libxcb-record.a output/usr/lib32/libxcb-render.a output/usr/lib32/libxcb-res.a output/usr/lib32/libxcb-screensaver.a output/usr/lib32/libxcb-shape.a output/usr/lib32/libxcb-shm.a output/usr/lib32/libxcb-sync.a output/usr/lib32/libxcb-xf86dri.a output/usr/lib32/libxcb-xfixes.a output/usr/lib32/libxcb-xinerama.a output/usr/lib32/libxcb-xinput.a output/usr/lib32/libxcb-xkb.a output/usr/lib32/libxcb-xtest.a output/usr/lib32/libxcb-xv.a output/usr/lib32/libxcb-xvmc.a output/usr/lib32/libX11-xcb.a
 
-Source200: https://xorg.freedesktop.org/releases/individual/xcb/libxcb-1.14.tar.gz
+Source200: https://www.x.org/releases/individual/xcb/libxcb-1.14.tar.gz
 
 %global LIB210 libxcb-util
-Source210: http://xcb.freedesktop.org/dist/xcb-util-0.4.0.tar.gz
+Source210: https://www.x.org/releases/individual/xcb/xcb-util-0.4.0.tar.gz
 
 # %%global LIB220 libxcb-cursor
-# xxxxx220: https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.3.tar.gz
+# xxxxx220: https://www.x.org/releases/individual/xcb/xcb-util-cursor-0.1.3.tar.gz
 
 %global LIB230 libxcb-image
-Source230: https://xcb.freedesktop.org/dist/xcb-util-image-0.4.0.tar.bz2
+Source230: https://www.x.org/releases/individual/xcb/xcb-util-image-0.4.0.tar.bz2
 
 %global LIB240 libxcb-keysyms
-Source240: http://xcb.freedesktop.org/dist/xcb-util-keysyms-0.4.0.tar.gz
+Source240: https://www.x.org/releases/individual/xcb/xcb-util-keysyms-0.4.0.tar.gz
 
 %global LIB250 libxcb-render-util
-Source250: https://xcb.freedesktop.org/dist/xcb-util-renderutil-0.3.9.tar.gz
+Source250: https://www.x.org/releases/individual/xcb/xcb-util-renderutil-0.3.9.tar.gz
 
 %global LIB260 libxcb-icccm
 %global LIB260_EXTRA64 output/usr/lib64/libxcb-ewmh.a
 %global LIB260_EXTRA32 output/usr/lib32/libxcb-ewmh.a
-Source260: https://xcb.freedesktop.org/dist/xcb-util-wm-0.4.1.tar.bz2
+Source260: https://www.x.org/releases/individual/xcb/xcb-util-wm-0.4.1.tar.bz2
 
 # %%global LIB270 libxcb-xrm
 # xxxxx270: https://github.com/Airblader/xcb-util-xrm/releases/download/v1.3/xcb-util-xrm-1.3.tar.bz2
