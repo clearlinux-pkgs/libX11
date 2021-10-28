@@ -1,6 +1,6 @@
 Name     : libX11
 Version  : 1.7.2
-Release  : 430
+Release  : 431
 
 Source0: https://www.x.org/releases/individual/lib/libX11-1.7.2.tar.gz
 
