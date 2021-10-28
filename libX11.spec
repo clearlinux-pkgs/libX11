@@ -41,7 +41,7 @@ Source110: https://www.x.org/releases/individual/lib/libXrandr-1.5.2.tar.gz
 Source120: https://www.x.org/releases/individual/lib/libXcomposite-0.4.5.tar.gz
 
 %global LIB130 libXi
-Source130: https://www.x.org/releases/individual/lib/libXi-1.7.10.tar.gz
+Source130: https://www.x.org/releases/individual/lib/libXi-1.8.tar.gz
 
 %global LIB140 libXxf86vm
 Source140: https://www.x.org/releases/individual/lib/libXxf86vm-1.1.4.tar.gz
