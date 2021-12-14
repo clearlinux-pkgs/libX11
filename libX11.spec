@@ -1,8 +1,8 @@
 Name     : libX11
-Version  : 1.7.2
+Version  : 1.7.3.1
 Release  : 431
 
-Source0: https://www.x.org/releases/individual/lib/libX11-1.7.2.tar.gz
+Source0: https://www.x.org/releases/individual/lib/libX11-1.7.3.1.tar.gz
 
 %global LIB10 libICE
 Source10 : https://www.x.org/releases/individual/lib/libICE-1.0.10.tar.gz
