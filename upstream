@@ -1,4 +1,4 @@
-f6dbb556df769ee42ef8fb92408ef2fbde6e7257/libX11-1.7.5.tar.gz
+96786da0b0d257188cad5f0886e0ef8ed49ada56/libX11-1.8.tar.gz
 b042c56b8a9cb42324c1ee7c8ac43f1bb54cc835/libICE-1.0.10.tar.gz
 595b43aec719e0525a1e07504218835dadee8ed2/libSM-1.2.3.tar.gz
 45ad25454e05cdc1ed5144b2abf1ae9e0f8fc95e/libXau-1.0.9.tar.gz
@@ -13,7 +13,7 @@ cc423279168f3d39bc69bfb224bf72235bc6b6a3/libXfixes-6.0.0.tar.gz
 3fade8b86fed6f9f01aef8b64e94dac0c37a6b50/libXi-1.8.tar.gz
 7ab340428ec501d6ebe3d307028c7a39f5b38495/libXxf86vm-1.1.4.tar.gz
 3472218fc0e8ee8183533d22dbcd4bbe90bf3ab8/libxshmfence-1.3.tar.bz2
-f0d7b99c8ae1fbe8a6ec9c8cf3faa21090b11b12/libxcb-1.14.tar.gz
+f6d149e5e7ada566e31516859eb6b69e75426217/libxcb-1.15.tar.gz
 43f889324a1564b682e107130c43643ce3e724b2/xcb-util-0.4.0.tar.gz
 c9c9361781911a47b28f74fc6ebe0abd1273fae4/xcb-util-image-0.4.0.tar.bz2
 e5c5baf3c07e8578c0553ddf1d718dfb07adca42/xcb-util-keysyms-0.4.0.tar.gz
