@@ -1,6 +1,6 @@
 Name     : libX11
 Version  : 1.8.1
-Release  : 434
+Release  : 435
 
 Source0: https://www.x.org/releases/individual/lib/libX11-1.8.1.tar.gz
 
@@ -365,7 +365,9 @@ echo "INPUT(libX11.so.6)" | tee > /dev/null \
 	`find output/usr/lib64/*.so  -printf "%{buildroot}/usr/lib64/%f\n"` \
 	`find output/usr/lib32/*.so  -printf "%{buildroot}/usr/lib32/%f\n"`
 
-cp -a 64/libX11.so* 64/haswell  %{buildroot}/usr/lib64
+cp -a 64/libX11.so*  %{buildroot}/usr/lib64
+mkdir -p %{buildroot}/usr/lib64/glibc-hwcaps/x86-64-v3/
+cp -a 64/haswell/* %{buildroot}/usr/lib64/glibc-hwcaps/x86-64-v3/
 cp -a 32/libX11.so*  %{buildroot}/usr/lib32
 
 popd
@@ -400,7 +402,7 @@ popd
 %defattr(-,root,root,-)
 /usr/include
 /usr/lib64/*.so
-/usr/lib64/haswell/*.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/*.so
 /usr/lib64/pkgconfig/*
 
 %files dev32
@@ -411,7 +413,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/*.so.*
-/usr/lib64/haswell/*.so.*
+/usr/lib64/glibc-hwcaps/x86-64-v3/*.so.*
 
 %files lib32
 %defattr(-,root,root,-)
