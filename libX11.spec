@@ -1,6 +1,6 @@
 Name     : libX11
 Version  : 1.8.2
-Release  : 436
+Release  : 437
 
 Source0: https://www.x.org/releases/individual/lib/libX11-1.8.2.tar.gz
 
