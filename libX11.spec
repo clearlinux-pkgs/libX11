@@ -75,6 +75,10 @@ Source250: https://www.x.org/releases/individual/xcb/xcb-util-renderutil-0.3.10.
 %global LIB260_EXTRA32 output/usr/lib32/libxcb-ewmh.a
 Source260: https://www.x.org/releases/individual/xcb/xcb-util-wm-0.4.2.tar.gz
 
+
+
+Source300: xcbfix.patch
+
 # %%global LIB270 libxcb-xrm
 # xxxxx270: https://github.com/Airblader/xcb-util-xrm/releases/download/v1.3/xcb-util-xrm-1.3.tar.bz2
 
@@ -228,6 +232,49 @@ BuildOne() {
 	
 }
 
+BuildOnePatch() {
+	echo Building $1 $2
+	n=$1
+	tar -axf $n
+	d=${n##*/}
+	d=${d/.tar*}
+	shift
+	mv $d $d-avx2
+	pushd $d-avx2
+		cat %{SOURCE300} | patch -p1
+		CFLAGS="$CFLAGS64 -march=haswell" LDFLAGS="$LDFLAGS64" PKG_CONFIG_LIB="$PKG_CONFIG_LIB64" PKG_CONFIG_PATH="$PKG_CONFIG_PATH64"	 %configure --enable-static --cache-file=${CACHEFILE}-avx2 "$@"
+		LD_LIBRARY_PATH=/builddir/build/BUILD/output/usr/lib64 \
+			make %{?_smp_mflags}
+		%make_install DESTDIR=/builddir/build/BUILD/output-avx2
+	popd
+	tar -axf $n
+	mv $d $d-64
+	pushd $d-64
+		cat %{SOURCE300} | patch -p1
+		CFLAGS="$CFLAGS64" LDFLAGS="$LDFLAGS64" PKG_CONFIG_LIB="$PKG_CONFIG_LIB64" PKG_CONFIG_PATH="$PKG_CONFIG_PATH64"	 %configure --enable-static --cache-file=${CACHEFILE}64 "$@"
+		LD_LIBRARY_PATH=/builddir/build/BUILD/output/usr/lib64 \
+			make %{?_smp_mflags}
+		%make_install DESTDIR=/builddir/build/BUILD/output
+		make VERBOSE=1 V=1 check || :
+	popd
+	tar -axf $n
+	mv $d $d-32
+	pushd $d-32
+		cat %{SOURCE300} | patch -p1
+		CFLAGS="$CFLAGS32" LDFLAGS="$LDFLAGS32" PKG_CONFIG_LIB="$PKG_CONFIG_LIB32" PKG_CONFIG_PATH="$PKG_CONFIG_PATH32" %configure --enable-static --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu  --cache-file=${CACHEFILE}32 "$@"
+		LD_LIBRARY_PATH=/builddir/build/BUILD/output/usr/lib32 \
+			make %{?_smp_mflags}
+		%make_install32 DESTDIR=/builddir/build/BUILD/output
+	popd
+	
+	rm -f output/usr/lib64/*.la
+	rm -f output/usr/lib32/*.la
+
+	CFLAGS="$CFLAGS64"
+	LDFLAGS="$LDFLAGS64"
+	
+}
+
 pushd ..
 
 export http_proxy=http://127.0.0.1:9/
@@ -256,7 +303,7 @@ BuildOne %{SOURCE30}
 BuildOne %{SOURCE40}
 
 # xcb round one to bootstrap
-BuildOne %{SOURCE200} --disable-dri3 --with-queue-size=32768 --disable-devel-docs  PYTHON=/usr/bin/python
+BuildOnePatch %{SOURCE200} --disable-dri3 --with-queue-size=32768 --disable-devel-docs  PYTHON=/usr/bin/python
 
 
 BuildOne %{SOURCE50}
