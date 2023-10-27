@@ -26,7 +26,7 @@ Source60 : https://www.x.org/releases/individual/lib/libXext-1.3.5.tar.gz
 Source70 : https://www.x.org/releases/individual/lib/libXinerama-1.1.5.tar.gz
 
 %global LIB80 libXfixes
-Source80 : https://www.x.org/releases/individual/lib/libXfixes-6.0.0.tar.gz
+Source80 : https://www.x.org/releases/individual/lib/libXfixes-6.0.1.tar.gz
 
 %global LIB90 libXdamage
 Source90 : https://www.x.org/releases/individual/lib/libXdamage-1.1.6.tar.gz
@@ -35,7 +35,7 @@ Source90 : https://www.x.org/releases/individual/lib/libXdamage-1.1.6.tar.gz
 Source100: https://www.x.org/releases/individual/lib/libXrender-0.9.11.tar.gz
 
 %global LIB110 libXrandr
-Source110: https://www.x.org/releases/individual/lib/libXrandr-1.5.3.tar.gz
+Source110: https://www.x.org/releases/individual/lib/libXrandr-1.5.4.tar.gz
 
 %global LIB120 libXcomposite
 Source120: https://www.x.org/releases/individual/lib/libXcomposite-0.4.6.tar.gz
