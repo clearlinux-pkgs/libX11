@@ -357,19 +357,19 @@ libs="output/usr/lib64/%{LIB10}.a \
 	output/usr/lib64/%{LIB250}.a \
 	output/usr/lib64/%{LIB260}.a %{LIB260_EXTRA64}"
 
-gcc $CFLAGS $LDFLAGS -m64 -o 64/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive $libs -Wl,--no-whole-archive -shared	-ldl
-gcc $CFLAGS $LDFLAGS -march=haswell -m64 -o 64/haswell/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive ${libs//64/64/haswell} -Wl,--no-whole-archive -shared	-ldl
+gcc $CFLAGS $LDFLAGS -m64 -o 64/libX11.so.6.4.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive $libs -Wl,--no-whole-archive -shared	-ldl
+gcc $CFLAGS $LDFLAGS -march=haswell -m64 -o 64/haswell/libX11.so.6.4.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive ${libs//64/64/haswell} -Wl,--no-whole-archive -shared	-ldl
 
-ln -s libX11.so.6.3.0 64/libX11.so
-ln -s libX11.so.6.3.0 64/libX11.so.6
-ln -s libX11.so.6.3.0 64/haswell/libX11.so
-ln -s libX11.so.6.3.0 64/haswell/libX11.so.6
+ln -s libX11.so.6.4.0 64/libX11.so
+ln -s libX11.so.6.4.0 64/libX11.so.6
+ln -s libX11.so.6.4.0 64/haswell/libX11.so
+ln -s libX11.so.6.4.0 64/haswell/libX11.so.6
 
 mkdir 32/
-gcc $CFLAGS $LDFLAGS -m32 -mstackrealign -o 32/libX11.so.6.3.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive ${libs//64/32} -Wl,--no-whole-archive -shared	 -ldl
+gcc $CFLAGS $LDFLAGS -m32 -mstackrealign -o 32/libX11.so.6.4.0 -Wl,--no-undefined -Wl,-soname,libX11.so.6 -flto=`getconf _NPROCESSORS_ONLN` -Wl,--whole-archive ${libs//64/32} -Wl,--no-whole-archive -shared	 -ldl
 
-ln -s libX11.so.6.3.0 32/libX11.so
-ln -s libX11.so.6.3.0 32/libX11.so.6
+ln -s libX11.so.6.4.0 32/libX11.so
+ln -s libX11.so.6.4.0 32/libX11.so.6
 tar -axf %{SOURCE0}
 
 popd
