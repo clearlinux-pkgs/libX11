@@ -1,8 +1,8 @@
 Name     : libX11
-Version  : 1.8.7
+Version  : 1.8.8
 Release  : 442
 
-Source0: https://www.x.org/releases/individual/lib/libX11-1.8.7.tar.gz
+Source0: https://www.x.org/releases/individual/lib/libX11-1.8.8.tar.gz
 
 %global LIB10 libICE
 Source10 : https://www.x.org/releases/individual/lib/libICE-1.1.1.tar.gz
